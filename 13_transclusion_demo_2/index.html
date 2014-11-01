@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS Transclusion demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="transclusionDemo.js"></script>
+</head>
+<body ng-app="transclusionDemo">
+<section>
+  <p>Should show: <input ng-model="shouldShow" type="checkbox"></p>
+  <div my-if="shouldShow">
+    <p>I can put any content in here</p>
+  </div>
+</section>
+</body>
+</html>

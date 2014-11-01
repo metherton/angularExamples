@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS $compile demo exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="compileDemo.js"></script>
+</head>
+<body ng-app="compileDemo" ng-init="template='template1.html'">
+  <p><button ng-click="template='template1.html'">template1</button><button ng-click="template='template2.html'">template2</button></p>
+  <div my-include="{{template}}"></div>
+</body>
+</html>

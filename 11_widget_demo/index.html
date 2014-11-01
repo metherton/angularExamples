@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ngRepeat demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="eventDemo.js"></script>
+  <style>
+    input.ng-valid {
+      border: 3px solid green;
+    }
+    input.ng-invalid.ng-dirty {
+      border: 3px solid red;
+    }
+    input.ng-invalid.ng-pristine {
+      border: 3px solid yellow;
+    }
+  </style>
+</head>
+<body ng-app="directivesDemo" ng-controller="PageCtrl as pageCtrl">
+<section>
+  <h1>Employee list</h1>
+  <employee-list employees="pageCtrl.employees"></employee-list>
+</section>
+<section>
+  <h1>Add new employee</h1>
+  <add-employee-form add-employee="pageCtrl.addEmployee(newEmployee)"></add-employee-form>
+</section>
+</body>
+</html>

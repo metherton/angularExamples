@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS Transclusion demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="transclusionDemo.js"></script>
+  <style>
+    .collapsable {
+      border: 1px solid black;
+    }
+    .collapsable-header {
+     height: 20px;
+      background-color: lightgray;
+      border-bottom: 1px solid black;
+    }
+  </style>
+</head>
+<body ng-app="transclusionDemo" ng-controller="PageCtrl">
+<section>
+  propertyOnPageScope: {{ propertyOnPageScope }}
+  <div div-wrapper>
+    <p>This content will be wrapped in an extra DIV element</p>
+  </div>
+  <collapsable>
+    <p>I can put any content in here</p>
+    <p>The scope in the transcluded part is the scope enclosing the transcluding directive: {{ propertyOnPageScope }}</p>
+  </collapsable>
+  <manual-collapsable>
+    <p>I can put any content in here</p>
+    <p>The scope in the transcluded part is the scope enclosing the transcluding directive: {{ propertyOnPageScope }}</p>
+  </manual-collapsable>
+</section>

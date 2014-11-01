@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Widget exercise</title>
+    <script src="../../../bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppCtrl">
+<h1>Comments</h1>
+<comment-list comments="comments"></comment-list>
+<section>
+  <h1>Add new comment</h1>
+  <comment-form controller="commentFormCtrl" add-comment="addComment(comment)"></comment-form>
+  <button ng-click="commentFormCtrl.clear()">Clear</button>
+</section>
+</body>
+</html>

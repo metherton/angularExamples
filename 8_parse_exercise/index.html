@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS $parse exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="parseExercise.js"></script>
+</head>
+<body ng-app="parseExercise" ng-controller="PageCtrl">
+<h1>Exercise 1</h1>
+<div style="width: 500px; height: 500px; border: 1px solid black;"  my-mousemove="onMousemove(x, y)">
+  <p>Coordinates: {{ x }}, {{ y }}</p>
+</div>
+<h1>Exercise 2</h1>
+<p>Details is open: <input type="checkbox" ng-model="open"></p>
+<details my-open="open">
+  <p>This is the content of the details element</p>
+</details>
+
+<h1>Exercise 2++</h1>
+<p>Details is open: <input type="checkbox" ng-model="open2"></p>
+<details ng-open="open2">
+    <p>This is the content of the details element</p>
+</details>
+
+</body>
+</html>

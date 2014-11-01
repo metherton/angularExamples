@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS $compile demo exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="compileDemo.js"></script>
+</head>
+<body ng-app="compileDemo">
+  <h1>Render a template dynamically using $compile</h1>
+  <p>Enter an AngularJS template</p>
+  <textarea ng-model="template"></textarea>
+  <div render-template="template"></div>
+</body>
+</html>

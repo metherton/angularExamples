@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Directives demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="linkDemo.js"></script>
+</head>
+<body ng-app="directivesDemo">
+<p>Checkbox: <input ng-model="shouldShow" type="checkbox"></p>
+<p my-show="shouldShow">This paragraph is displayed conditionally</p>
+
+<p><button click-alert="shouldShow is {{shouldShow}}">Click me!</button></p>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ngModelController demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="modelControllerDemo.js"></script>
+  <style>
+    .ng-invalid {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body ng-app="modelControllerDemo">
+<section>
+  <p>This input field is only valid if it contains the text 'secret': <input ng-model="str" secret-validator></p>
+  <p>This input field is only valid if it contains an integer, and the model value is an integer: <input ng-model="int" integer></p>
+
+</section>
+</body>
+</html>

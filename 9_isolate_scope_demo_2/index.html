@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS Directives demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="directivesDemo.js"></script>
+</head>
+<body ng-app="directivesDemo">
+<p>Value1: <input ng-model="value1"></p>
+<p>Value2: <input ng-model="value2"></p>
+<div isolated attribute="{{value1}} {{value2}}"
+     expression="value1 +' ' + value2"
+     twoway="value1"></div>
+
+<div isolated2 attribute="{{value1}} {{value2}}"
+     expression="value1 +' ' + value2"
+     twoway="value1"></div>
+
+</body>
+</html>

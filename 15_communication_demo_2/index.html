@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS directive communication demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="communicationDemo.js"></script>
+</head>
+<body ng-app="communicationDemo" tab-menu="myMenu">
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li tab-menu-entry="hello"><a href="">Hello</a></li>
+    <li tab-menu-entry="world"><a href="">World</a></li>
+  </ul>
+  <div class="tab-content" tab-pane="hello">
+    <h4>Hello</h4>
+    <p>Lorem ipsum dolor sit amet</p>
+  </div>
+  <div class="tab-content" tab-pane="world">
+    <h4>World</h4>
+    <em>Mauris elementum elementum enim at suscipit.</em>
+    <p><a href ng-click="i = i + 1">counter: {{i || 0}}</a></p>
+  </div>
+</div>
+</body>
+</html>

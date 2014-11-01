@@ -1,0 +1,13 @@
+<ul>
+  <li ng-repeat="comment in comments">
+    <dl>
+      <dt>Author:</dt>
+      <dd>{{ comment.author }}</dd>
+      <dt>Title:</dt>
+      <dd> {{ comment.title }}</dd>
+      <dt>Content:</dt>
+      <dd style="white-space: pre-wrap;">{{ comment.content }}</dd>
+    </dl>
+    <button ng-click="delete(comment)">Delete</button>
+  </li>
+</ul>

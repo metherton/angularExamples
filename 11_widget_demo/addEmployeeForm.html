@@ -1,0 +1,12 @@
+<form name="addEmployeeForm" ng-submit="submit()" novalidate>
+  <dl>
+    <dt>Name:</dt>
+    <dd><input name="name" ng-model="newEmployee.name" required ng-minlength="3" ng-maxlength="30">
+      <span ng-show="addEmployeeForm.name.$invalid && addEmployeeForm.name.$dirty">Invalid name</span></dd>
+    <dt>Age:</dt>
+    <dd><input type="number" ng-model="newEmployee.age" min="1"></dd>
+    <dt>Job:</dt>
+    <dd><input required ng-model="newEmployee.job"></dd>
+    <button type="submit">Add new employee</button>
+  </dl>
+</form>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ngModelController demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="modelControllerExercise.js"></script>
+  <style>
+    .ng-invalid {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body ng-app="modelControllerExercise">
+<section>
+  <p>Enter password: <input type="password" ng-model="password"></p>
+  <p>Repeat password: <input type="password" ng-model="passwordRepeat" expression-validator="$value == password"></p>
+  <p>This integer is only valid if it is odd: <input type="number" ng-model="odd" expression-validator="$value % 2 == 1"></p>
+
+</section>
+</body>
+</html>

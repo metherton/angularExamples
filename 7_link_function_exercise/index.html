@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS Directives demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="app.js"></script>
+  <style>
+    .blue {
+      color: blue;
+    }
+    .big {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body ng-app="directivesDemo" ng-controller="AppCtrl">
+<h2>myOpen directive</h2>
+<p>Details is open: <input type="checkbox" ng-model="open"></p>
+<details my-open="open">
+  <p>This is the content of the details element</p>
+</details>
+
+<h2>toogleClass directive</h2>
+<span toggle-class="blue">This text should change color if you click on it.</span>
+
+<h2>myClass directive</h2>
+<div my-class="classes">
+  <p>This DIV should have classes on it</p>
+</div>
+<form ng-submit="addClass()">
+  <input ng-model="newClass" required>
+  <button type="submit">Add class</button>
+</form>
+
+</body>
+</html>

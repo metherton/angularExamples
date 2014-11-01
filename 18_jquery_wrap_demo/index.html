@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS JQuery wrapper demo</title>
+  <script src="../../../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="../../../bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script src="datepicker.js"></script>
+
+  <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../../../bower_components/bootstrap-datepicker/css/datepicker3.css">
+
+</head>
+<body ng-app="datepicker">
+<section>
+  <h1>Wrapping JQuery datepicker</h1>
+  Enter date without datepicker: <input ng-model="selectedDate"><br>
+  Enter date: <input ng-model="selectedDate" datepicker>
+</section>
+<div style="height: 300px"></div>
+
+</body>
+</html>
