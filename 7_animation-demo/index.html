@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS Databinding</title>
+  <script src="../../../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="../../../bower_components/angular-animate/angular-animate.js"></script>
+  <script src="animations.js"></script>
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body ng-app="animationsDemo">
+<section>
+  <p>Show: <input ng-model="shouldShow" type="checkbox"></p>
+  <div ng-if="shouldShow" class="fade-in-transition">
+    <p>This is animated using CSS transition</p>
+  </div>
+  <div ng-if="shouldShow" class="fade-in-animation">
+    <p>This is animated using CSS animation</p>
+  </div>
+  <div ng-class="{ 'hidden': !shouldShow }">
+    <p> This is animated using a CSS transition triggered by adding a class</p>
+  </div>
+  <div ng-if="shouldShow" class="fade-in-js">
+    <p>This is animated using a JavaScript animation</p>
+  </div>
+</section>
+</body>
+</html>

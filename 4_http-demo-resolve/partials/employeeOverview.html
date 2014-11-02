@@ -1,0 +1,26 @@
+<section>
+  <h1>Employees</h1>
+  <ul>
+    <li ng-repeat="employee in employees">
+      <a ng-href="{{ employee | employeeDetailsUrl }}">{{ employee.name }}</a>
+    </li>
+  </ul>
+</section>
+<section>
+  <h1>Add new employee</h1>
+
+  <form ng-submit="addEmployee()">
+    <dl>
+      <dt>Name:</dt>
+      <dd><input ng-model="newEmployee.name"></dd>
+      <dt>age:</dt>
+      <dd>
+        <input type="number" ng-model="newEmployee.age"></dd>
+      <dt>job:</dt>
+      <dd>
+        <input ng-model="newEmployee.job">
+      </dd>
+    </dl>
+    <button type="submit">Add employee</button>
+  </form>
+</section>

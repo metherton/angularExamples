@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AngularJS ngMessages demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="../../../bower_components/angular-messages/angular-messages.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="app">
+  <h1>Demo error messages</h1>
+  <form name="myForm">
+    <label>Name</label>
+    <label for="inputName">Name</label>
+      <input type="text" id="inputName" ng-model="name" name="name"
+             required
+             ng-minlength="3">
+    <div ng-messages="myForm.name.$error">
+      <div ng-message="required">Please enter your name</div>
+      <div ng-message="minlength">Please enter at least 3 characters</div>
+    </div>
+    <label for="sex">Sex</label>
+      <select id="sex" ng-model="sex" name="sex" required>
+        <option>Female</option>
+        <option>Male</option>
+      </select>
+    <div ng-messages="myForm.sex.$error">
+      <div ng-message="required">Please enter your sex</div>
+    </div>
+  </form>
+</body>
+</html>

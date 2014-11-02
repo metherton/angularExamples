@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>AngularJS filter exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppCtrl">
+<h1>Comments</h1>
+<ul>
+  <p>Reverse order: <input type="checkbox" ng-model="reverse"></p>
+  <li ng-repeat="comment in comments | orderBy:['author', '-title']:reverse track by comment.id">
+    <dl>
+      <dt>Author:</dt>
+      <dd>{{ comment.author}}</dd>
+      <dt>Title:</dt>
+      <dd> {{ comment.title | lowercase }}</dd>
+      <dt>Content:</dt>
+      <dd style="white-space: pre-wrap;">{{ comment.content }}</dd>
+    </dl>
+  </li>
+</ul>
+</body>
+</html>

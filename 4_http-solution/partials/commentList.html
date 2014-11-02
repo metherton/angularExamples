@@ -1,0 +1,24 @@
+<section>
+  <h1>TODO list</h1>
+  <ul>
+    <li ng-repeat="comment in comments">
+      <a ng-href="{{ comment | commentUrl }}">{{ comment.title }}</a>
+    </li>
+  </ul>
+  <button ng-click="deleteAllComments()">Delete all comments!</button>
+</section>
+<section>
+  <h1>Add new comment</h1>
+
+  <form ng-submit="addComment()">
+    <dl>
+      <dt>Author:</dt>
+      <dd><input ng-model="newComment.author"></dd>
+      <dt>Title:</dt>
+      <dd><input ng-model="newComment.title"></dd>
+      <dt>Content:</dt>
+      <dd><textarea ng-model="newComment.content"></textarea></dd>
+    </dl>
+    <button type="submit">Add comment</button>
+  </form>
+</section>

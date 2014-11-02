@@ -1,0 +1,20 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/opt/local/bin/node',
+1 verbose cli   '/opt/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'unit-test-exercise' ]
+2 info using npm@1.4.25
+3 info using node@v0.10.31
+4 error Error: ENOENT, open '/Users/andreas/projects/trifork/angular-course/code/day2/5_unit-testing-exercise/package.json'
+5 error If you need help, you may report this *entire* log,
+5 error including the npm and node versions, at:
+5 error     <http://github.com/npm/npm/issues>
+6 error System Darwin 14.0.0
+7 error command "/opt/local/bin/node" "/opt/local/bin/npm" "run" "unit-test-exercise"
+8 error cwd /Users/andreas/projects/trifork/angular-course/code/day2/5_unit-testing-exercise
+9 error node -v v0.10.31
+10 error npm -v 1.4.25
+11 error path /Users/andreas/projects/trifork/angular-course/code/day2/5_unit-testing-exercise/package.json
+12 error code ENOENT
+13 error errno 34
+14 verbose exit [ 34, true ]

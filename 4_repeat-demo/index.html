@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ngRepeat demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="repeatDemo.js"></script>
+</head>
+<body ng-app="app" ng-controller="RepeatDemoCtrl">
+<h1>Employee list</h1>
+<ul>
+  <li ng-repeat="employee in employees">
+    <dl>
+      <dt>Name:</dt>
+      <dd> {{ employee.name }}</dd>
+      <dt>Age:</dt>
+      <dd> {{ employee.age }}</dd>
+      <dt>Job:</dt>
+      <dd>{{ employee.job }}</dd>
+    </dl>
+    <dl>
+    </dl>
+  </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS Databinding Exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="databinding.js"></script>
+</head>
+<body ng-app="app" ng-controller="DatabindingCtrl">
+<h1>Comment</h1>
+<dl>
+  <dt>Author:</dt>
+  <dd></dd>
+  <dt>Title:</dt>
+  <dd></dd>
+  <dt>Content:</dt>
+  <dd style="white-space: pre-wrap;"></dd>
+</dl>
+<h1>Modify comment</h1>
+<dl>
+  <dt><label for="commentAuthor">Author: </label></dt>
+  <dd><input id="commentAuthor"></dd>
+  <dt><label for="commentTitle">Title: </label></dt>
+  <dd><input id="commentTitle"></dd>
+  <dt><label for="commentContent">Content: </label></dt>
+  <dd><textarea id="commentContent"></textarea></dd>
+</dl>
+</body>
+</html>

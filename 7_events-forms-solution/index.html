@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS events and forms exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="eventsExercise.js"></script>
+  <style>
+    input.ng-invalid.ng-dirty {
+      border: 3px solid red;
+    }
+    input.ng-valid {
+      border: 3px solid green;
+    }
+  </style>
+</head>
+<body ng-app="app" ng-controller="EventExerciseCtrl">
+<section>
+  <h1>Comments</h1>
+  <ul>
+    <li ng-repeat="comment in comments track by comment.id">
+      <dl>
+        <dt>Index:</dt>
+        <dd>{{ $index }}</dd>
+        <dt>Author:</dt>
+        <dd>{{ comment.author }}</dd>
+        <dt>Title:</dt>
+        <dd> {{ comment.title }}</dd>
+        <dt>Content:</dt>
+        <dd style="white-space: pre-wrap;">{{ comment.content }}</dd>
+      </dl>
+    </li>
+  </ul>
+</section>
+<section>
+  <h1>Add new comment</h1>
+  <form name="addCommentForm" ng-submit="addComment()" novalidate>
+    <dl>
+      <dt><label for="anonymous">Post anonymously</label></dt>
+      <dd><input id="anonymous" type="checkbox" ng-model="anonymous"></dd>
+      <dt ng-if-start="!anonymous"><label for="commentAuthor">Author: </label></dt>
+      <dd ng-if-end><input ng-enabled="!anonymous"
+                 id="commentAuthor"
+                 ng-model="$parent.newComment.author"
+                 name="author"
+                 required
+                 ng-minlength="3"
+                 ng-maxlength="20"
+                 ng-pattern="/^[a-zA-Z ]*$/">
+        <span ng-show="addCommentForm.author.$error.required">Please enter author name</span>
+        <span ng-show="addCommentForm.author.$error.minlength">Please enter at least 3 letters</span>
+        <span ng-show="addCommentForm.author.$error.maxlength">At most 20 characters is allowed</span>
+        <span ng-show="addCommentForm.author.$error.pattern">Only US alphabetic characters and space is allowed</span>
+      </dd>
+      <dt><label for="commentTitle">Title: </label></dt>
+      <dd><input id="commentTitle"
+                 ng-model="newComment.title"
+                 name="title"
+                 required ng-maxlength="20"></dd>
+      <dt><label for="commentContent">Content: </label></dt>
+      <dd><textarea id="commentContent" ng-model="newComment.content" name="content" required></textarea></dd>
+    </dl>
+    <button type="submit">Add new comment</button>
+  </form>
+</section>
+</body>
+</html>

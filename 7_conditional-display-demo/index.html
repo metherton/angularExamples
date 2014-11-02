@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS conditional display demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+</head>
+<body ng-app>
+<section>
+  <h1>ngShow and ngHide</h1>
+  <p>Expression is true: <input type="checkbox" ng-model="bool"></p>
+  <p ng-show="bool">ngShow visible! The text in this input is kept when this element is hidden: <input ng-model="myText"></p>
+  <p ng-hide="bool">ngHide visible!</p>
+</section>
+<section>
+  <h1>ngIf</h1>
+  <div ng-if="bool">
+    <p>ng-if is visible</p>
+    <p>The text in this input is destroyed when this section is hidden: <input ng-model="myText2"></p>
+  </div>
+</section>
+<section  ng-switch on="bool">
+  <h1>ngSwitch</h1>
+  <div ng-switch-when="true">Switch condition was true</div>
+  <div ng-switch-when="false">Switch condition was false</div>
+  <div ng-switch-default>Switch condition was neither true or false</div>
+</section>
+<section>
+  <h1>Child scopes causing problems</h1>
+  <input ng-model="foo">
+  <p>Foo is: {{ foo}}</p>
+  <div ng-if="bool" style="border: 1px solid black;">
+    <input ng-model="foo">
+    <p>Foo is {{ foo}}</p>
+  </div>
+</section>
+</body>
+</html>

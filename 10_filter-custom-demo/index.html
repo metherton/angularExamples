@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Custom filters</title>
+    <script src="../../../bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppCtrl">
+<h1>Reverse string filter</h1>
+<input ng-model="str">
+<p>Reversed: {{ str | reverseString }}</p>
+<h2>Slice filter</h2>
+  <h1>Unfiltered</h1>
+  <ul>
+    <li ng-repeat="employee in employees">{{ employee.name }}</li>
+  </ul>
+<h1>Sliced</h1>
+<p>Start: <input type="number" ng-model="start"></p>
+<p>End: <input type="number" ng-model="end"></p>
+<ul>
+  <li ng-repeat="employee in employees | slice:start:end">{{ employee.name }}</li>
+</ul>
+</body>
+</html>

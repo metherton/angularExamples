@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Custom filters</title>
+    <script src="../../../bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppCtrl">
+  <h1>Unfiltered</h1>
+  <ul>
+    <li ng-repeat="comment in comments">{{ comment.title }}</li>
+  </ul>
+  <h1>Filtered</h1>
+  <p>Offset: <input type="number" ng-model="offset"></p>
+  <p>Limit: <input type="number" ng-model="limit"></p>
+  <ul>
+    <li ng-repeat="comment in comments | offset:offset | limit:limit">{{ comment.title }}</li>
+  </ul>
+  <h1>uppercaseArray</h1>
+  <p>Unfiltered:</p>
+  <ul>
+    <li ng-repeat="str in stringArray">{{ str }}</li>
+  </ul>
+  <p>Filtered:</p>
+  <ul>
+    <li ng-repeat="str in stringArray | uppercaseArray">{{ str }}</li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ngModelOptions demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="modelOptionsDemo.js"></script>
+</head>
+<body ng-app="app" ng-controller="ModelOptionsCtrl">
+<p>updateOn blur only: <input ng-model="blurOnly" ng-model-options="{ updateOn: 'blur' }"> Value: {{ blurOnly}}</p>
+<p>debounce 2 seconds: <input ng-model="debounce2s" ng-model-options="{ debounce: 2000 }"> Value: {{ debounce2s}}</p>
+<p>debounce 2 seconds, immediate on blur: <input ng-model="debounce2s" ng-model-options="{ updateOn: 'default blur', debounce: { default: 2000, blur: 0} }"> Value: {{ debounce2s}}</p>
+<p>disallowInvalid: <input ng-model="disallowInvalid" ng-minlength="10"> Value: {{ disallowInvalid}}</p>
+<p>allowInvalid: <input ng-model="allowInvalid" ng-model-options="{ allowInvalid: true }" ng-minlength="10"> Value: {{ allowInvalid}}</p>
+<p>getterSetter: <input ng-model="myValue" ng-model-options="{ getterSetter: true }"> Value: {{ myValue()}}</p>
+</body>
+</html>

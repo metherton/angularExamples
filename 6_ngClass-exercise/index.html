@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ngClass exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="ngClassExercise.js"></script>
+  <style>
+    .blue {
+      color: blue;
+    }
+    .red {
+      color: red;
+    }
+    .odd {
+      background-color: whitesmoke;
+    }
+  </style>
+</head>
+<body ng-app="app" ng-controller="ClassExerciseCtrl">
+<h1>Comments</h1>
+<ul>
+  <!-- TODO first item should have class 'blue' -->
+  <!-- TODO odd items should have class 'odd' -->
+  <li ng-repeat="comment in comments track by comment.id">
+    <dl>
+      <dt>Index:</dt>
+      <dd>{{ $index }}</dd>
+      <dt>Author:</dt>
+      <!-- TODO author with name 'Bob' should have class 'red'  on the <dd> element -->
+      <dd>{{ comment.author }}</dd>
+      <dt>Title:</dt>
+      <dd> {{ comment.title }}</dd>
+      <dt>Content:</dt>
+      <dd style="white-space: pre-wrap;">{{ comment.content }}</dd>
+    </dl>
+  </li>
+</ul>
+</body>
+</html>

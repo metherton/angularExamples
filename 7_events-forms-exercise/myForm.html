@@ -1,0 +1,15 @@
+<form name="addCommentForm" ng-submit="submit()" novalidate>
+    <dl>
+        <dt><label for="commentAuthor">Author: </label></dt>
+        <dd><input id="commentAuthor"
+                   ng-model="newComment.author"
+                   name="author">
+        </dd>
+        <dt><label for="commentTitle">Title: </label></dt>
+        <dd><input id="commentTitle"
+                   ng-model="newComment.title"></dd>
+        <dt><label for="commentContent">Content: </label></dt>
+        <dd><textarea id="commentContent" ng-model="newComment.content"></textarea></dd>
+    </dl>
+    <button type="submit">Add new comment</button>
+</form>

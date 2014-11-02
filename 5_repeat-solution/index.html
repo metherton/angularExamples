@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ngRepeat demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="repeatExercise.js"></script>
+</head>
+<body ng-app="app" ng-controller="RepeatExerciseCtrl">
+<h1>Comments</h1>
+<ul>
+  <li ng-repeat="comment in comments track by comment.id">
+    <dl>
+      <dt>Index:</dt>
+      <dd>{{ $index }}</dd>
+      <dt>Author:</dt>
+      <dd>{{ comment.author }}</dd>
+      <dt>Title:</dt>
+      <dd> {{ comment.title }}</dd>
+      <dt>Content:</dt>
+      <dd style="white-space: pre-wrap;">{{ comment.content }}</dd>
+    </dl>
+  </li>
+</ul>
+<p>Extra:</p>
+<ul>
+  <li ng-repeat="(id, comment) in commentMap">
+    <dl>
+      <dt>Index:</dt>
+      <dd>{{ $index }}</dd>
+      <dt>Author:</dt>
+      <dd>{{ comment.author }}</dd>
+      <dt>Title:</dt>
+      <dd> {{ comment.title }}</dd>
+      <dt>Content:</dt>
+      <dd style="white-space: pre-wrap;">{{ comment.content }}</dd>
+    </dl>
+  </li>
+</ul>
+</body>
+</html>

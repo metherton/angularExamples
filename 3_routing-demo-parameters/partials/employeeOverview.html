@@ -1,0 +1,4 @@
+<h1>Employees</h1>
+    <ul><li ng-repeat="employee in employees">
+      <a ng-href="{{ employee | employeeDetailsUrl }}">{{ employee.name }}</a>
+    </li></ul>

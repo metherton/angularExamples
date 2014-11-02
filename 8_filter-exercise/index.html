@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <title>AngularJS filter exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppCtrl">
+<h1>Comments</h1>
+<ul>
+  <li ng-repeat="comment in comments">
+    <dl>
+      <dt>Author:</dt>
+      <dd>{{ comment.author}}</dd>
+      <dt>Title:</dt>
+      <dd> {{ comment.title}}</dd>
+      <dt>Content:</dt>
+      <dd style="white-space: pre-wrap;">{{ comment.content }}</dd>
+    </dl>
+  </li>
+</ul>
+</body>
+</html>

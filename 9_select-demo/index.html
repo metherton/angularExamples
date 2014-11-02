@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>AngularJS select demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppCtrl">
+<h1>select ngOptions demo</h1>
+<select ng-model="selectedNumber1"
+        ng-options="item for item in [1,2,3,4]"></select><br>
+<p>Selected: {{ selectedNumber1 }}</p>
+<select ng-model="selectedItem1"
+        ng-options="emp.name for emp in employees track by emp.id"></select><br>
+<p>Selected: {{ selectedItem1 }} </p>
+<select ng-model="selectedItem2"
+        ng-options="emp.id as emp.name + ' (' + emp.job + ')' for emp in employees"></select><br>
+<p>Selected: {{ selectedItem2 }} </p>
+<select ng-model="selectedItem3"
+        ng-options= "emp.id as emp.name group by emp.job for emp in employees">
+  <option value="">(none)</option></select>
+  <p>Selected: {{ selectedItem3 }} </p>
+<select ng-model="selectedItem4"
+        ng-options= "emp.id as emp.name group by emp.job for emp in employees | orderBy:'job'">
+  <option value="">(none)</option></select>
+<p>Selected: {{ selectedItem4 }} </p>
+<select ng-model="selectedItem5"
+        ng-options= "emp.id as emp.name group by emp.job for emp in employees | orderBy:['job', 'name']">
+  <option value="">(none)</option></select>
+<p>Selected: {{ selectedItem5 }} </p>
+</body>
+</html>

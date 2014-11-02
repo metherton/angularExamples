@@ -1,0 +1,23 @@
+<section>
+  <h1>Comment list</h1>
+  <ul>
+    <li ng-repeat="comment in comments">
+      <a>{{comment.author}}: {{ comment.title }}</a>
+    </li>
+  </ul>
+</section>
+<section>
+  <h1>Add new comment</h1>
+  <form ng-submit="addComment()">
+    <dt><label for="commentAuthor">Author: </label></dt>
+    <dd><input id="commentAuthor"
+               ng-model="newComment.author">
+    </dd>
+    <dt><label for="commentTitle">Title: </label></dt>
+    <dd><input id="commentTitle"
+               ng-model="newComment.title"></dd>
+    <dt><label for="commentContent">Content: </label></dt>
+    <dd><textarea id="commentContent" ng-model="newComment.content"></textarea></dd>
+    <button type="submit">Add new comment</button>
+  </form>
+</section>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS events and forms exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="eventsExercise.js"></script>
+</head>
+<body ng-app="app" ng-controller="EventExerciseCtrl">
+<section>
+  <h1>Comments</h1>
+  <ul>
+    <li ng-repeat="comment in comments track by comment.id">
+      <dl>
+        <dt>Index:</dt>
+        <dd>{{ $index }}</dd>
+        <dt>Author:</dt>
+        <dd>{{ comment.author }}</dd>
+        <dt>Title:</dt>
+        <dd> {{ comment.title }}</dd>
+        <dt>Content:</dt>
+        <dd style="white-space: pre-wrap;">{{ comment.content }}</dd>
+      </dl>
+    </li>
+  </ul>
+</section>
+<section>
+  <h1>Add new comment</h1>
+  <!-- TODO use ng-submit to register a handler for form submission -->
+<div my-form-wrapper>
+</div>
+</section>
+</body>
+</html>

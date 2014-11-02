@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>AngularJS filter demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppCtrl">
+<h1>Filter demo</h1>
+<p>Search employees: <input ng-model="searchText"></p>
+  <ul>
+    <li ng-repeat="employee in employees | filter:searchText | orderBy:'name'">
+      <dl>
+        <dt>Name:</dt>
+        <dd> {{ employee.name | uppercase}}</dd>
+        <dt>Age:</dt>
+        <dd> {{ employee.age }}</dd>
+        <dt>Job:</dt>
+        <dd>{{ employee.job }}</dd>
+      </dl>
+      <dl>
+      </dl>
+    </li>
+  </ul>
+</body>
+</html>

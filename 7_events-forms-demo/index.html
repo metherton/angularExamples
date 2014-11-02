@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ngRepeat demo</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="eventDemo.js"></script>
+  <style>
+    input.ng-valid {
+      border: 3px solid green;
+    }
+    input.ng-invalid.ng-dirty {
+      border: 3px solid red;
+    }
+    input.ng-invalid.ng-pristine {
+      border: 3px solid yellow;
+    }
+  </style>
+</head>
+<body ng-app="app" ng-controller="EventDemoCtrl">
+<section>
+  <h1>Employee list</h1>
+  <ul>
+    <li ng-repeat="employee in employees">
+      <dl>
+        <dt>Name:</dt>
+        <dd> {{ employee.name }}</dd>
+        <dt>Age:</dt>
+        <dd> {{ employee.age }}</dd>
+        <dt>Job:</dt>
+        <dd>{{ employee.job }}</dd>
+      </dl>
+    </li>
+  </ul>
+</section>
+<section>
+  <h1>Add new employee</h1>
+
+  <form name="addEmployeeForm" ng-submit="addEmployee()" novalidate>
+    <dl>
+      <dt>Name:</dt>
+      <dd><input name="name" ng-model="newEmployee.name"
+                 required
+                 ng-minlength="3"
+                 ng-maxlength="30">
+      <span
+          ng-show="addEmployeeForm.name.$invalid && addEmployeeForm.name.$dirty">
+        Invalid name</span></dd>
+      <dt>Age:</dt>
+      <dd><input type="number" ng-model="newEmployee.age" min="1"></dd>
+      <dt>Job:</dt>
+      <dd><input required ng-model="newEmployee.job"></dd>
+      <button type="submit">Add new employee</button>
+    </dl>
+  </form>
+</section>
+</body>
+</html>

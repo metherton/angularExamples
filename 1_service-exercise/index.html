@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS Service exercise</title>
+  <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="service.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppCtrl">
+<section>
+  <h1>Comments</h1>
+  <ul>
+    <li ng-repeat="comment in comments">
+      <dl>
+        <dt>Author:</dt>
+        <dd>{{ comment.author }}</dd>
+        <dt>Title:</dt>
+        <dd> {{ comment.title }}</dd>
+        <dt>Content:</dt>
+        <dd style="white-space: pre-wrap;">{{ comment.content }}</dd>
+      </dl>
+    </li>
+  </ul>
+  <button ng-click="loadComments()">Load comments</button><br>
+  <button ng-click="saveComments()">Save comments</button><br>
+  <button ng-click="clearComments()">Clear comments</button>
+  <h1>Add new comment</h1>
+  <form ng-submit="addComment()">
+    <dt><label for="commentAuthor">Author: </label></dt>
+    <dd><input id="commentAuthor"
+               ng-model="newComment.author">
+    </dd>
+    <dt><label for="commentTitle">Title: </label></dt>
+    <dd><input id="commentTitle"
+               ng-model="newComment.title"></dd>
+    <dt><label for="commentContent">Content: </label></dt>
+    <dd><textarea id="commentContent" ng-model="newComment.content"></textarea></dd>
+    <button type="submit">Add new comment</button>
+  </form>
+</section>
+</body>
+</html>
