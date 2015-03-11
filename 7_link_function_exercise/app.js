@@ -1,40 +1,57 @@
 (function() {
-  var module = angular.module('directivesDemo', []);
+    var module = angular.module('directivesDemo', []);
 
-  module.directive('myOpen', function() {
-     return {
-       link: function(scope, element, attrs) {
-          scope.$watch(attrs.myOpen, function(value) {
-             if (value) {
-               attrs.$set('open',true); 
-             } else {
-               attrs.$set('open',false);
-             }
-          });
-       }
-     };
-  });
+    module.directive('myOpen', function() {
+        return function myOpenLink(scope, elm, attrs) {
+            scope.$watch(attrs.myOpen, function(value) {
+                attrs.$set('open', !!value);
+            });
+        }
+    });
 
-  module.directive('myClass', function() {
-     return {
-       link: function(scope, element, attrs) {
-         scope.$watch('classes', function(value) {
-console.log('watch entered');
-           var newClass = scope.classes[scope.classes.length - 1];
-           attrs.$set('classes',newClass);            
-         },true);
-       }
-    }; 
-  });
+    module.directive('toggleClass', function() {
+        return {
+            link: function(scope, elm, attrs) {
+                elm.on('click', function() {
+                    if(elm.hasClass(attrs.toggleClass)) {
+                        attrs.$removeClass(attrs.toggleClass);
+                    }
+                    else {
+                        attrs.$addClass(attrs.toggleClass);
+                    }
+                });
+            }
+        }
+    });
 
-  // the controller below creates an array variable 'classes' on the scope,
-  // and add two elements 'a' and 'b' to it.
-  module.controller('AppCtrl', function($scope){
-    $scope.classes = ['a', 'b'];
-    $scope.addClass = function() {
-      $scope.classes.push($scope.newClass);
-    }
-  });
+    // the controller below creates an array variable 'classes' on the scope,
+    // and add two elements 'a' and 'b' to it.
+    module.controller('AppCtrl', function($scope){
+        $scope.classes = ['a', 'b'];
+        $scope.addClass = function() {
+            $scope.classes.push($scope.newClass);
+        }
+    });
+
+    module.directive('myClass', function() {
+        return function myClassLink(scope, elm, attr) {
+            // or use scope.$watchCollection(attr.myClass, function(newClasses, oldClasses) {  ...and u do not need the true at end
+
+            scope.$watch(attr.myClass, function(newClasses, oldClasses) {
+                console.log(newClasses, oldClasses);
+                if(angular.isArray(oldClasses)) {
+                    oldClasses.forEach(function(oldClass) {
+                        elm.removeClass(oldClass);
+                    });
+                }
+                if(angular.isArray(newClasses)) {
+                    newClasses.forEach(function(newClass) {
+                        elm.addClass(newClass);
+                    });
+                }
+            }, true);
+        }
+    });
 
 
 })();
