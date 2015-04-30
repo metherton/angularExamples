@@ -13,6 +13,7 @@
   module.directive('imdefinedasattribute', function() {
     return {
       restrict: 'A',
+     // replace: 'true',
       template: '<p>Hello attribute definition!</p>'
     };
   });

@@ -1,4 +1,4 @@
-(function () {
+    (function () {
   var module = angular.module('httpDemo', ['ngResource', 'ngRoute']);
   module.config(function ($routeProvider) {
     $routeProvider
