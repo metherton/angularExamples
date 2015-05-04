@@ -56,28 +56,34 @@ describe('sudoko', function () {
         _ = $rootScope._;
     }));
 
-    beforeEach(function() {
-
-
-    });
-
-    it('should return cell value', function() {
+    xit('should return cell value', function() {
         expect(Game.cell('a2')).toEqual('4');
     });
 
-    it('should return valid values after applying row constraint rule', function() {
+    xit('should return valid values after applying row constraint rule', function() {
         expect(Game.rowCandidates('a1')).toEqual(['1', '3', '5', '6', '7', '9']);
         expect(Game.rowCandidates('b1')).toEqual(['1', '3', '4', '5', '7']);
     });
 
-    it('should return valid values after applying column constraint rule', function() {
+    xit('should return valid values after applying column constraint rule', function() {
         expect(Game.columnCandidates('a1')).toEqual(['2', '3', '5', '6', '8']);
         expect(Game.columnCandidates('a3')).toEqual(['1','2', '3','4', '5', '9']);
     });
 
-    it('should return valid values after applying square constraint rule', function() {
+    xit('should return valid values after applying square constraint rule', function() {
         expect(Game.squareCandidates('a1')).toEqual(['1','2', '3', '5', '6', '9']);
         expect(Game.squareCandidates('i8')).toEqual(['2', '3', '6', '7','8']);
     });
+
+    xit('should apply all constraints', function() {
+        expect(Game.candidatesFor('a1')).toEqual(['3', '5', '6']);
+        expect(Game.candidatesFor('d5')).toEqual(['9']);
+    });
+
+    it('should get the next best candidate', function() {
+        expect(Game.bestCandidate()).toEqual({key:'d5', value:'9'});
+    });
+
+
 
 });

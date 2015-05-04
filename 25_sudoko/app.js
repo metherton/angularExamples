@@ -44,6 +44,9 @@ sudokoApp.factory('GameModel', function() {
     return {
         get: function() {
             return model;
+        },
+        set: function(newCell) {
+            model[newCell.key] = newCell.value;
         }
     }
 
@@ -51,97 +54,160 @@ sudokoApp.factory('GameModel', function() {
 
 sudokoApp.factory('Game', function(GameModel, _) {
 
+   var self = this;
+
+   function columnCandidates(key) {
+        var fullSetOfColumnValues = ['a','b','c','d','e','f','g','h','i'];
+        var column = key.charAt(1);
+        var columnValues = _.map(fullSetOfColumnValues, function(cell) {
+            return GameModel.get()[cell + column];
+        });
+        return _.difference(['1','2', '3','4', '5','6','7','8','9'], columnValues);
+    }
+
+    function rowCandidates(key) {
+        var fullSetOfRowValues = ['1','2','3','4','5','6','7','8','9'];
+        var row = key.charAt(0);
+        var rowValues = _.map(fullSetOfRowValues, function(cell) {
+            return GameModel.get()[row + cell];
+        });
+        return _.difference(['1','2', '3','4', '5','6','7','8','9'], rowValues);
+    }
+
+    function squareCandidates(key) {
+        var topSquareRows = ['a', 'b', 'c'];
+        var middleSquareRows = ['d', 'e', 'f'];
+        var bottomSquareRows = ['g', 'h', 'i'];
+        var leftSquareColumns = ['1', '2', '3'];
+        var middleSquareColumns = ['4', '5', '6'];
+        var rightSquareColumns = ['7', '8', '9'];
+
+        var squares = {
+            '1': {
+                cells: ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'],
+                rows: topSquareRows,
+                columns: leftSquareColumns
+            },
+            '2': {
+                cells: ['a4', 'a5', 'a6', 'b4', 'b5', 'b6', 'c4', 'c5', 'c6'],
+                rows: topSquareRows,
+                columns: middleSquareColumns
+            },
+            '3': {
+                cells: ['a7', 'a8', 'a9', 'b7', 'b8', 'b9', 'c7', 'c8', 'c9'],
+                rows: topSquareRows,
+                columns: rightSquareColumns
+            },
+            '4': {
+                cells: ['d1', 'd2', 'd3', 'e1', 'e2', 'e3', 'f1', 'f2', 'f3'],
+                rows: middleSquareRows,
+                columns: leftSquareColumns
+            },
+            '5': {
+                cells: ['d4', 'd5', 'd6', 'e4', 'e5', 'e6', 'f4', 'f5', 'f6'],
+                rows: middleSquareRows,
+                columns: middleSquareColumns
+            },
+            '6': {
+                cells: ['d7', 'd8', 'd9', 'e7', 'e8', 'e9', 'f7', 'f8', 'f9'],
+                rows: middleSquareRows,
+                columns: rightSquareColumns
+            },
+            '7': {
+                cells: ['g1', 'g2', 'g3', 'h1', 'h2', 'h3', 'i1', 'i2', 'i3'],
+                rows: bottomSquareRows,
+                columns: leftSquareColumns
+            },
+            '8': {
+                cells: ['g4', 'g5', 'g6', 'h4', 'h5', 'h6', 'i4', 'i5', 'i6'],
+                rows: bottomSquareRows,
+                columns: middleSquareColumns
+            },
+            '9': {
+                cells: ['g7', 'g8', 'g9', 'h7', 'h8', 'h9', 'i7', 'i8', 'i9'],
+                rows: bottomSquareRows,
+                columns: rightSquareColumns
+            }
+        };
+
+        var squareIndex = _.findKey(squares, function(square) {
+            return _.includes(square.cells, key);
+        });
+
+      //  console.log('squares', squares);
+      //  console.log('square indiex', squareIndex, 'for key', key);
+
+        var rowValues = _.map(squares[squareIndex].cells, function(cell) {
+            return GameModel.get()[cell];
+        });
+
+        return _.difference(['1','2', '3','4', '5','6','7','8','9'], rowValues);
+    }
+
+    function candidatesFor(key) {
+        var columnUnusedValues = columnCandidates(key);
+        var rowUnusedValues = rowCandidates(key);
+        var squareUnusedValues = squareCandidates(key);
+        return _.intersection(columnUnusedValues, rowUnusedValues, squareUnusedValues);
+    }
+
    return {
-           get: function() {
-               return GameModel.get();
-           },
+       set: function(newCell) {
+           GameModel.set(newCell);
+       },
+       get: function() {
+           return GameModel.get();
+       },
         cell: function(key) {
             return GameModel.get()[key];
         },
        columnCandidates: function(key) {
-           var fullSetOfColumnValues = ['a','b','c','d','e','f','g','h','i'];
-           var column = key.charAt(1);
-           var columnValues = _.map(fullSetOfColumnValues, function(cell) {
-               return GameModel.get()[cell + column];
-           });
-           return _.difference(['1','2', '3','4', '5','6','7','8','9'], columnValues);
+           return columnCandidates(key);
        },
         rowCandidates: function(key) {
-            var fullSetOfRowValues = ['1','2','3','4','5','6','7','8','9'];
-            var row = key.charAt(0);
-            var rowValues = _.map(fullSetOfRowValues, function(cell) {
-                return GameModel.get()[row + cell];
-            });
-            return _.difference(['1','2', '3','4', '5','6','7','8','9'], rowValues);
+            return rowCandidates(key);
         },
        squareCandidates: function(key) {
-           var topSquareRows = ['a', 'b', 'c'];
-           var middleSquareRows = ['d', 'e', 'f'];
-           var bottomSquareRows = ['g', 'h', 'i'];
-           var leftSquareColumns = ['1', '2', '3'];
-           var middleSquareColumns = ['4', '5', '6'];
-           var rightSquareColumns = ['7', '8', '9'];
-
-           var squares = {
-               '1': {
-                   cells: ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'],
-                   rows: topSquareRows,
-                   columns: leftSquareColumns
-               },
-               '2': {
-                   cells: ['a4', 'a5', 'a6', 'b4', 'b5', 'b6', 'c4', 'c5', 'c6'],
-                   rows: topSquareRows,
-                   columns: middleSquareColumns
-               },
-               '3': {
-                   cells: ['a7', 'a8', 'a9', 'b7', 'b8', 'b9', 'c7', 'c8', 'c9'],
-                   rows: topSquareRows,
-                   columns: rightSquareColumns
-               },
-               '4': {
-                   cells: ['d1', 'd2', 'd3', 'e1', 'e2', 'e3', 'f1', 'f2', 'f3'],
-                   rows: middleSquareRows,
-                   columns: leftSquareColumns
-               },
-               '5': {
-                   cells: ['d4', 'd5', 'd6', 'e4', 'e5', 'e6', 'f4', 'f5', 'f6'],
-                   rows: middleSquareRows,
-                   columns: middleSquareColumns
-               },
-               '6': {
-                   cells: ['d4', 'd5', 'd6', 'e4', 'e5', 'e6', 'f4', 'f5', 'f6'],
-                   rows: middleSquareRows,
-                   columns: rightSquareColumns
-               },
-               '7': {
-                   cells: ['g1', 'g2', 'g3', 'h1', 'h2', 'h3', 'i1', 'i2', 'i3'],
-                   rows: bottomSquareRows,
-                   columns: leftSquareColumns
-               },
-               '8': {
-                   cells: ['g4', 'g5', 'g6', 'h4', 'h5', 'h6', 'i4', 'i5', 'i6'],
-                   rows: bottomSquareRows,
-                   columns: middleSquareColumns
-               },
-               '9': {
-                   cells: ['g7', 'g8', 'g9', 'h7', 'h8', 'h9', 'i7', 'i8', 'i9'],
-                   rows: bottomSquareRows,
-                   columns: rightSquareColumns
-               }
+           return squareCandidates(key);
+       },
+       candidatesFor: function(key) {
+           return candidatesFor(key);
+       },
+       bestCandidate: function() {
+           var nextCandidates = {
+               1: {},
+               2: {},
+               3: {},
+               4: {},
+               5: {},
+               6: {},
+               7: {},
+               8: {},
+               9: {}
            };
+           var candidate = {};
+           ['a','b','c','d','e','f','g','h','i'].forEach(function(row) {
+               ['1','2','3','4','5','6','7','8','9'].forEach(function(col) {
+                   var key = row + col;
 
-           var squareIndex = _.findKey(squares, function(square) {
-               return _.includes(square.cells, key);
+             //      console.log('get key', key, 'from model', GameModel.get());
+                   if (GameModel.get()[key] !== '' && GameModel.get()[key] !== undefined) {
+               //        console.log('return');
+                       return candidate;
+                   }
+                   var candidatesForCell = candidatesFor(key);
+                   nextCandidates[candidatesForCell.length][key] = candidatesForCell;
+                   console.log('next cand', nextCandidates);
+                    if (angular.isDefined(nextCandidates['1']))     {
+                        for (var cell in nextCandidates['1']) {
+                            candidate.key = cell;
+                            candidate.value = _.first(nextCandidates['1'][cell]);
+                            break;
+                        }
+                    }
+               })
            });
-
-           console.log('squareindex', squareIndex);
-
-           var rowValues = _.map(squares[squareIndex].cells, function(cell) {
-               return GameModel.get()[cell];
-           });
-
-           console.log('rowvalues', rowValues);
-           return _.difference(['1','2', '3','4', '5','6','7','8','9'], rowValues);
+            return candidate;
        }
     };
 });
@@ -609,19 +675,13 @@ sudokoApp.directive('sudoko', function(Game, $rootScope, _) {
         controller: function($scope, $attrs) {
 
             $scope.solve = function() {
-
                 console.log('solve the puzzle');
-                $scope.model = Game.get();
-//                for (var i = 0; i < 91; i++) {
-//                 //   var newCell = Game.singleCellCandidate();
-//
-//                    var newCell = Game.getNextCandidate();
-//                    console.log('new cell',newCell);
-//
-//                    Game.set(newCell);
-//                    $scope.model = Game.get();
-//
-//                }
+                var count = 1;
+                while (angular.isDefined(Game.bestCandidate()) && count < 60) {
+                    var bestCandidate = Game.bestCandidate();
+                    Game.set(bestCandidate);
+                    count++;
+                }
             };
 
             function initialize() {
