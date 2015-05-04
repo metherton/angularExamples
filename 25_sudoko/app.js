@@ -677,7 +677,7 @@ sudokoApp.directive('sudoko', function(Game, $rootScope, _) {
             $scope.solve = function() {
                 console.log('solve the puzzle');
                 var count = 1;
-                while (angular.isDefined(Game.bestCandidate()) && count < 60) {
+                while (count < 60) {
                     var bestCandidate = Game.bestCandidate();
                     Game.set(bestCandidate);
                     count++;
