@@ -7,38 +7,66 @@ var sudokoApp = angular.module('sudokoApp', [])
     });
 
 sudokoApp.factory('GameModel', function() {
+// easy
+//  var model = {
+//        a2: '4',
+//        a5: '8',
+//        a7: '2',
+//        b3: '8',
+//        b4: '2',
+//        b5: '6',
+//        b8: '9',
+//        c1: '7',
+//        c6: '4',
+//        c9: '3',
+//        d2: '3',
+//        d6: '2',
+//        d9: '4',
+//        e1: '1',
+//        e5: '7',
+//        e7: '5',
+//        f3: '6',
+//        f4: '5',
+//        f8: '3',
+//        g1: '9',
+//        g4: '8',
+//        g7: '1',
+//        g8: '4',
+//        h2: '6',
+//        h6: '5',
+//        h7: '9',
+//        i1: '4',
+//        i3: '7',
+//        i5: '1',
+//        i9: '5'
+//    };
 
     var model = {
-        a2: '4',
-        a5: '8',
-        a7: '2',
-        b3: '8',
-        b4: '2',
-        b5: '6',
-        b8: '9',
-        c1: '7',
-        c6: '4',
-        c9: '3',
-        d2: '3',
-        d6: '2',
-        d9: '4',
-        e1: '1',
+        a1: '8',
+        a4: '2',
+        b1: '1',
+        b2: '2',
+        b5: '3',
+        b7: '9',
+        c2: '9',
+        c4: '7',
+        c7: '1',
+        d1: '4',
+        d8: '8',
+        d9: '1',
         e5: '7',
-        e7: '5',
-        f3: '6',
-        f4: '5',
-        f8: '3',
-        g1: '9',
-        g4: '8',
-        g7: '1',
-        g8: '4',
-        h2: '6',
-        h6: '5',
-        h7: '9',
-        i1: '4',
-        i3: '7',
-        i5: '1',
-        i9: '5'
+        e7: '4',
+        f2: '6',
+        f5: '8',
+        f6: '5',
+        f9: '2',
+        g2: '1',
+        g7: '2',
+        h3: '4',
+        h6: '7',
+        i1: '3',
+        i4: '1',
+        i5: '9'
     };
 
     return {
@@ -134,9 +162,6 @@ sudokoApp.factory('Game', function(GameModel, _) {
             return _.includes(square.cells, key);
         });
 
-      //  console.log('squares', squares);
-      //  console.log('square indiex', squareIndex, 'for key', key);
-
         var rowValues = _.map(squares[squareIndex].cells, function(cell) {
             return GameModel.get()[cell];
         });
@@ -185,18 +210,75 @@ sudokoApp.factory('Game', function(GameModel, _) {
                8: {},
                9: {}
            };
+           var rowCandidates = {
+              a: {},
+              b: {},
+               c: {},
+               d: {},
+               e: {},
+               f: {},
+               g: {},
+               h: {},
+               i: {}
+           };
+           var columnCandidates = {
+               1: {},
+               2: {},
+               3: {},
+               4: {},
+               5: {},
+               6: {},
+               7: {},
+               8: {},
+               9: {}
+           };
+           var squareCellCandidates = {
+               1: {},
+               2: {},
+               3: {},
+               4: {},
+               5: {},
+               6: {},
+               7: {},
+               8: {},
+               9: {}
+           };
+
+
+           function convertKeyToSquare(key) {
+               if (_.includes(['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3'], key)) {
+                   return '1';
+               } else if (_.includes(['a4', 'a5', 'a6', 'b4', 'b5', 'b6', 'c4', 'c5', 'c6'], key)) {
+                   return '2';
+               }  else if (_.includes(['a7', 'a8', 'a9', 'b7', 'b8', 'b9', 'c7', 'c8', 'c9'], key)) {
+                   return '3';
+               } else if (_.includes(['d1', 'd2', 'd3', 'e1', 'e2', 'e3', 'f1', 'f2', 'f3'], key)) {
+                   return '4';
+               }  else if (_.includes(['d4', 'd5', 'd6', 'e4', 'e5', 'e6', 'f4', 'f5', 'f6'], key)) {
+                   return '5';
+               }else if (_.includes(['d7', 'd8', 'd9', 'e7', 'e8', 'e9', 'f7', 'f8', 'f9'], key)) {
+                   return '6';
+               }  else if (_.includes(['g1', 'g2', 'g3', 'h1', 'h2', 'h3', 'i1', 'i2', 'i3'], key)) {
+                   return '7';
+               } else if (_.includes(['g4', 'g5', 'g6', 'h4', 'h5', 'h6', 'i4', 'i5', 'i6'], key)) {
+                   return '8';
+               }  else if (_.includes(['g7', 'g8', 'g9', 'h7', 'h8', 'h9', 'i7', 'i8', 'i9'], key)) {
+                   return '9';
+               }
+           }
+
            var candidate = {};
            ['a','b','c','d','e','f','g','h','i'].forEach(function(row) {
                ['1','2','3','4','5','6','7','8','9'].forEach(function(col) {
                    var key = row + col;
-
-             //      console.log('get key', key, 'from model', GameModel.get());
                    if (GameModel.get()[key] !== '' && GameModel.get()[key] !== undefined) {
-               //        console.log('return');
                        return candidate;
                    }
                    var candidatesForCell = candidatesFor(key);
                    nextCandidates[candidatesForCell.length][key] = candidatesForCell;
+                   rowCandidates[row][col] = candidatesForCell;
+                   columnCandidates[col][row] = candidatesForCell;
+                   squareCellCandidates[convertKeyToSquare(key)][key] = candidatesForCell;
                    console.log('next cand', nextCandidates);
                     if (angular.isDefined(nextCandidates['1']))     {
                         for (var cell in nextCandidates['1']) {
@@ -204,6 +286,8 @@ sudokoApp.factory('Game', function(GameModel, _) {
                             candidate.value = _.first(nextCandidates['1'][cell]);
                             break;
                         }
+                    } else {
+
                     }
                })
            });
