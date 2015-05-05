@@ -8,66 +8,67 @@ var sudokoApp = angular.module('sudokoApp', [])
 
 sudokoApp.factory('GameModel', function() {
 // easy
-//  var model = {
-//        a2: '4',
-//        a5: '8',
-//        a7: '2',
-//        b3: '8',
-//        b4: '2',
-//        b5: '6',
-//        b8: '9',
-//        c1: '7',
-//        c6: '4',
-//        c9: '3',
-//        d2: '3',
-//        d6: '2',
-//        d9: '4',
-//        e1: '1',
-//        e5: '7',
-//        e7: '5',
-//        f3: '6',
-//        f4: '5',
-//        f8: '3',
-//        g1: '9',
-//        g4: '8',
-//        g7: '1',
-//        g8: '4',
-//        h2: '6',
-//        h6: '5',
-//        h7: '9',
-//        i1: '4',
-//        i3: '7',
-//        i5: '1',
-//        i9: '5'
-//    };
-
-    var model = {
-        a1: '8',
-        a4: '2',
-        b1: '1',
-        b2: '2',
-        b5: '3',
-        b7: '9',
-        c2: '9',
-        c4: '7',
-        c7: '1',
-        d1: '4',
-        d8: '8',
-        d9: '1',
+  var model = {
+        a2: '4',
+        a5: '8',
+        a7: '2',
+        b3: '8',
+        b4: '2',
+        b5: '6',
+        b8: '9',
+        c1: '7',
+        c6: '4',
+        c9: '3',
+        d2: '3',
+        d6: '2',
+        d9: '4',
+        e1: '1',
         e5: '7',
-        e7: '4',
-        f2: '6',
-        f5: '8',
-        f6: '5',
-        f9: '2',
-        g2: '1',
-        g7: '2',
-        h3: '4',
-        h6: '7',
-        i1: '3',
-        i4: '1',
-        i5: '9'
+        e7: '5',
+        f3: '6',
+        f4: '5',
+        f8: '3',
+        g1: '9',
+        g4: '8',
+        g7: '1',
+        g8: '4',
+        h2: '6',
+        h6: '5',
+        h7: '9',
+        i1: '4',
+        i3: '7',
+        i5: '1',
+        i9: '5'
     };
+
+    // hard
+//    var model = {
+//        a1: '8',
+//        a4: '2',
+//        b1: '1',
+//        b2: '2',
+//        b5: '3',
+//        b7: '9',
+//        c2: '9',
+//        c4: '7',
+//        c7: '1',
+//        d1: '4',
+//        d8: '8',
+//        d9: '1',
+//        e5: '7',
+//        e7: '4',
+//        f2: '6',
+//        f5: '8',
+//        f6: '5',
+//        f9: '2',
+//        g2: '1',
+//        g7: '2',
+//        h3: '4',
+//        h6: '7',
+//        i1: '3',
+//        i4: '1',
+//        i5: '9'
+//    };
 
     return {
         get: function() {
@@ -301,8 +302,501 @@ sudokoApp.directive('sudoko', function(Game, $rootScope, _) {
     function getTemplate() {
         return '<div class="container-fluid">' +
             '<div class="jumbotron">' +
+            '<div class="row">' +
+            '<div class="col-xs-1">&nbsp;</div>' +
+            '<div class="col-xs-1"><div class="input-group">1</div></div><div class="col-xs-1"><div class="input-group">2</div></div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">3</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">4</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">5</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group" >6</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">7</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">8</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">9</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row">' +
+            '<div class="col-xs-1">A</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.a1" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.a2" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.a3" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.a4" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.a5" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.a6" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.a7" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.a8" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.a9" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row">' +
+            '<div class="col-xs-1">B</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.b1" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.b2" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.b3" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.b4" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.b5" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.b6" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.b7" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.b8" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.b9" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row" >' +
+            '<div class="col-xs-1">C</div>' +
+            '<div class="col-xs-1"  style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.c1" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1"  style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.c2" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1"  style="border-right-style: solid;border-right-width: thin;border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.c3" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1"  style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.c4" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1"  style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.c5" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1"  style="border-bottom-style: solid;border-bottom-width: thin;border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.c6" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.c7" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.c8" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.c9" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row">' +
+            '<div class="col-xs-1">D</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.d1" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.d2" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.d3" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.d4" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.d5" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.d6" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.d7" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.d8" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.d9" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row">' +
+            '<div class="col-xs-1">E</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.e1" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.e2" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin" >' +
+            '<div class="input-group">' +
+            '<input ng-model="model.e3" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.e4" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.e5" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.e6" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.e7" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.e8" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.e9" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row"><div class="col-xs-1">F</div><div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin"><div class="input-group">' +
+            '<input ng-model="model.f1" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.f2" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin;border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.f3" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.f4" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.f5" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1"  style="border-bottom-style: solid;border-bottom-width: thin;border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.f6" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.f7" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.f8" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-bottom-style: solid;border-bottom-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.f9" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row">' +
+            '<div class="col-xs-1">G</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.g1" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.g2" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.g3" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.g4" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.g5" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.g6" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.g7" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.g8" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.g9" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row">' +
+            '<div class="col-xs-1">H</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.h1" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.h2" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.h3" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.h4" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.h5" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.h6" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.h7" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.h8" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.h9" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row">' +
+            '<div class="col-xs-1">I</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.i1" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.i2" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.i3" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.i4" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.i5" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1" style="border-right-style: solid;border-right-width: thin">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.i6" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.i7" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.i8" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-xs-1">' +
+            '<div class="input-group">' +
+            '<input ng-model="model.i9" type="text" class="form-control">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row"><div class="col-xs-12">&nbsp;</div></div>' +
+            '<div class="row"><div class="col-xs-6"></div><div class="col-xs-6"><button ng-click="solve()">Solve</button></div></div>' +
+            '</div></div>';
+    }
 
-            '<div class="row"><div class="col-xs-1">&nbsp;</div><div class="col-xs-1"><div class="input-group">1</div></div><div class="col-xs-1"><div class="input-group">2</div></div>' +
+    return {
+        restrict: 'A',
+        replace: 'true',
+        scope: {},
+        controller: function($scope, $attrs) {
+
+            $scope.solve = function() {
+                console.log('solve the puzzle');
+                var count = 1;
+                while (count < 60) {
+                    var bestCandidate = Game.bestCandidate();
+                    Game.set(bestCandidate);
+                    count++;
+                }
+            };
+
+            function initialize() {
+                $scope.model = Game.get();
+            }
+
+            initialize();
+        },
+        // templateUrl: 'sudoko.html'
+        template: getTemplate()
+    }
+});
+
+
+sudokoApp.directive('sudoko-grid', function(Game, $rootScope, _) {
+
+    function getTemplate() {
+        return '<div class="container-fluid">' +
+            '<div class="jumbotron">' +
+            '<div class="row">' +
+            '<div class="col-xs-1">&nbsp;</div>' +
+            '<div class="col-xs-1"><div class="input-group">1</div></div><div class="col-xs-1"><div class="input-group">2</div></div>' +
             '<div class="col-xs-1">' +
             '<div class="input-group">3</div>' +
             '</div>' +
