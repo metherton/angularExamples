@@ -2,7 +2,8 @@
   var module = angular.module('directives', []);
   module.controller('directivesCtrl', function($scope) {
     $scope.message = 'rainbowdash';
-  })
+    $scope.helo = 'this is my message';
+  });
 
   module.directive('imdefinedaselement', function() {
     return {
@@ -31,8 +32,10 @@
   });
   module.directive('iuseanisolatescope', function() {
     return {
-      scope: {},
-      template: '<p>({{ message }}) vs ({{ $parent.message }})</p>'
+      scope: {
+          bla: '='
+      },
+      template: '<p>({{ bla }}) vs ({{ $parent.message }})</p>'
     };
   });
 

@@ -1,6 +1,15 @@
 (function() {
   var module = angular.module('communicationExercise', []);
 
+  module.controller('SudokoCtrl', function($scope) {
+
+      $scope.foo = {
+          name: 'Martin',
+          value: 'super'
+      };
+
+  });
+
   module.directive('accordion', function() {
     return {
       restrict: 'E',
@@ -8,6 +17,7 @@
         var accordionController = this;
 
         var sections = $scope.sections = [];
+
 
         accordionController.addSection = function(sectionController) {
           sections.push(sectionController);
