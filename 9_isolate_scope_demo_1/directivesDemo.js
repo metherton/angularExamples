@@ -5,7 +5,7 @@
       scope: {
         greet: '=greeting'
       },
-      template: '{{ greet }} world!'
+      template: '{{ greet }} world!<br /><input ng-model="greet" />'
     }
   });
 })();
