@@ -5,12 +5,15 @@
       scope: {
         attr: '@attribute',
         expr: '&expression',
+        expr1: '&expression1',
         twoway: '='
       },
       template: '<dl><dt>attr:</dt>' +
         '<dd>{{ attr }}</dd>' +
         '<dt>expr:</dt>' +
         '<dd>{{ expr() }}</dd>' +
+        '<dt>expr1:</dt>' +
+        '<dd>{{ expr1() }}</dd>' +
         '<dt>twoway:</dt>' +
         '<dd><input ng-model="twoway"></dd>' +
         '</dl>'
